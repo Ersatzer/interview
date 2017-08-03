@@ -1,0 +1,79 @@
+body,input,button,table{margin:0px; padding: 0px;}
+body{
+     background: url(img/background.jpg);
+  /* background-image: url(349876.jpg);*/
+}
+table{border-collapse:collapse;  
+      padding:0px;
+     width: 400px;}
+h1{text-align: center;
+	font-weight: bold;
+    font-family: "楷体","微软雅黑";
+    }
+#content{
+	width: 850px;
+	min-height: 700px;
+    border:1px solid green;
+    margin:20px auto;     
+}
+.left,.right{
+	width:400px;
+	height:300px;
+	/*height: 500px; */
+	background: white;
+	border: 1px solid blue;
+	float: left;
+	margin:10px; 
+	overflow-y:auto; 
+	overflow-x:hidden;
+	border-radius: 12px;
+  box-shadow: 10px 10px; 
+}
+.radius{border-radius: 10px;}
+.Next{
+	clear: both;
+	width: 600px;
+	height: 300px;
+	margin:0px auto;	
+	padding: 20px;
+	text-align: center;
+
+}
+/*form h4{text-align: center;}*/
+.Input{height: 30px;outline: none;width: 300px;font-size: 15px;}
+.Next input::-webkit-input-placeholder {color: blue;}
+.Next input:-moz-placeholder {color: green;}   /*  Mozilla firefox  */
+.Next input:-ms-input-placeholder {color: green;}   /*  IE  */
+.select{
+	width: 300px;
+  height: 30px;
+  margin: 0 auto;
+  text-align: left;
+}
+.selt{
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  margin:0 auto;
+}
+.submit{
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	border: 0px;
+	margin:20px auto; 
+	/*border: 1px solid green;*/
+	font-size: 15px;
+	background: blue;
+	color: white;
+}
+thead tr{height: 40px;}
+tbody tr{height:30px;}
+table tr td{text-align: center; font-family: "微软雅黑","楷体";border: 1px solid #b4ccee;}
+.title{text-align: center;font-size: 20px;
+	    font-family: "微软雅黑","楷体";
+        margin: 15px 0;}
+.wid{
+       width: 300px;
+  }

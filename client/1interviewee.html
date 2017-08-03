@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>interviewer</title>
+	<link rel="stylesheet" href="inter.css" type="text/css">
+	<link rel="stylesheet" href="css/buttons.css">
+	<script src="js/jquery.min.js"></script>
+	<script tyoe="text/javascript">
+		$(function(){
+			$('#Sub').click(function(){
+				var number=document.getElementById("number").value;
+				if(number==""){
+					alert("输入的学号为空，请输入！");
+					return false;
+				}
+	           if(!(/^0\d{7}$/.test(number))){
+	          alert("学号输入错误，请重写！");
+	          return false;
+	            }
+	            else{
+	            	$.ajax({
+					url:' ../server/dis_interview.php',
+					type:'POST',
+					async:true,
+					data:{
+						'stu_name':$('#usr').val(),
+						'stu_num':$('#number').val()
+					},
+					success:function(data){
+	                	var txtobj=eval("("+data+")");
+	                  	alert(txtobj.msg);
+	                  	$('#usr').val('');
+	                  	$('#number').val('');
+					},
+					error:function(){
+          		    alert("出现错误！");
+          	       }					 
+				})
+	            }
+			});
+		});		
+	</script>
+
+	<script>
+	     $(window).load(function(){
+	  
+		setInterval(function(){
+          $.ajax({
+          	url:'../server/flow.php?t='+Math.random(), 
+          	type:'post',
+          	async:true,
+          	success:function(data,status){     
+          	 $("#tb").children().remove(); 
+          	  $("#tb2").children().remove();   	 
+               var listobj=eval("("+data+")");
+               // 等待区的信息
+               for(var i=0;i<listobj[1].data.length;i++)
+               {
+               	  $('#tb').append('<tr><td class="stu_num"></td> <td class="stu_name"></td><td class="stu_status"></td></tr>');
+               }
+               for(var i=0;i<listobj[1].data.length;i++)
+	            {
+	            	 $('#tb .stu_num').eq(i).html(listobj[1].data[i].stu_num);
+	            	  $('#tb .stu_name').eq(i).html(listobj[1].data[i].stu_name);
+	            	   $('#tb .stu_status').eq(i).html(listobj[1].data[i].status);
+	            }
+                //面试进行时的信息
+                for (var i = 0; i < listobj[0].data.length; i++) {
+                	$('#tb2').append('<tr><td class="group_num"></td><td class="stu_num"></td> <td class="stu_name"></td><td class="stu_status"></td></tr>');
+                };
+                for(var i=0;i<listobj[0].data.length;i++)
+	            {
+	            	 $('#tb2 .group_num').eq(i).html(listobj[0].data[i].group_name);
+	            	  $('#tb2 .stu_num').eq(i).html(listobj[0].data[i].stu_num);
+	            	  $('#tb2 .stu_name').eq(i).html(listobj[0].data[i].stu_name);
+	            	   $('#tb2 .stu_status').eq(i).html(listobj[0].data[i].status);
+	            }
+              
+               // $(".left").scrollTop({
+               //   speed:15 //数值越大 速度越慢
+               //  });
+          	},
+          	error:function(){
+          		alert("出现错误！");
+          	}
+          });
+          
+         
+		},2000);
+          
+
+ $.fn.scrollTop = function(options){
+  var defaults = {
+   speed:30
+   };
+  var opts = $.extend(defaults,options);
+  this.each(function(){
+   var $timer;
+   var scroll_top=0;
+   var obj = $(this);
+   var $height = obj.find("table").height();
+   obj.find("table").clone().appendTo(obj);
+     clearInterval($timer); 
+   obj.hover(function(){
+    clearInterval($timer);
+    },function(){
+     $timer = setInterval(function(){
+      scroll_top++;
+      if(scroll_top > $height){
+       scroll_top = 0;
+      }
+      obj.find("table").first().css("margin-top",-scroll_top);
+    },opts.speed);
+
+    }).trigger("mouseleave");
+   })
+  }
+ });
+		
+	</script>
+</head>
+<body>
+	 <div id="content">
+	   <h1>面试者信息</h1>
+	 	<div class="left">
+	 		<table>
+	 		<caption class="title">等待区</caption>
+	 			<thead>
+	 				<tr>
+	 				   <td>学号</td>
+					   <td>姓名</td>
+					  
+					   <td>等待的面试</td>
+	 				</tr>
+	 			</thead>
+	 			<div>
+	 			<tbody id="tb">
+	 				
+	 			</tbody>
+	 			</div>
+	 		</table>
+	 	</div>
+	 	<div class="right">
+	 		<table>
+	 		<caption class="title">面试进行中。。。</caption>
+	 			<thead>
+	 				<tr>
+	 				   <td>组别</td>
+					   <td>学号</td>
+					   <td>姓名</td>
+					   <td>即将面试</td>
+	 				</tr>
+	 			</thead>
+	 			<tbody id="tb2">
+	 				
+	 			</tbody>
+	 		</table>
+	 	</div>
+	 	<div class="Next">
+	 	    <h4>请输入个人信息</h4>
+	 		<p><input type="text" id="usr" name="stu_name" class="Input radius" placeholder="输入姓名"></p>
+	 		<p><input type="text" id="number" name="stu_num" class="Input radius" placeholder="输入学号"></p>	 	
+	         <button  class="button button-3d button-primary button-pill wid"  id="Sub">签到</button>   
+	 	</div>
+	 </div>
+</body>
+</html>

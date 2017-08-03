@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>信息统计</title>
+	<script src="js/jquery.min.js"></script>
+	<script>
+	   $(function(){
+		$("#obtn1").click(function(){
+			window.location.href="interesult.php?status=-1";
+		}); 
+		$("#obtn2").click(function(){
+			window.location.href="interesult.php?status=-2";
+		}); 
+		$("#obtn3").click(function(){
+			window.location.href="interesult.php?status=6";
+		});
+		$("#quit").click(function(){
+			history.go(-1);
+		});
+	})
+	</script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: url(img/bg_one.png);
+		}
+		#content{
+			width: 500px;
+			height: 500px;
+			position: absolute;
+			left: 0;right: 0;top: 0;bottom: 0;
+			margin:auto;
+			background:url(img/bg_one2.png) no-repeat center;
+		}
+		#obtn1{
+			margin-top:60px;
+			
+		}
+		#obtn2{
+			margin-top: 90px;
+		}
+		#obtn3{
+			margin-top: 85px;
+		}
+		.button{
+			float: left;
+			width: 300px;
+			height: 66px;
+			margin-left: 140px;
+			border: none;
+			outline: none;
+			cursor: pointer;
+
+			color: #FF445F;
+			font-size: 32px;
+			font-weight: 300;
+			font-family: "楷体";
+			line-height: 40px;
+			background-color:rgba(223, 241, 234, 0);
+		}
+		#quit{
+			float:right;
+			margin-top: 10px;
+			margin-right: 10px;
+			border:1px solid white;
+			outline: none;
+			cursor: pointer;
+			width: 80px;
+			height: 40px;
+			color: white;
+			font-size: 32px;
+			font-weight: 300;
+			font-family: "楷体";
+			line-height: 40px;
+			background-color:rgba(223, 241, 234, 0);
+		}
+	</style>
+</head>
+<body>
+	<div id="content">
+			<button id="obtn1" class="button">未签到同学</button>
+			<button id="obtn2" class="button">未通过同学</button>
+			<button id="obtn3" class="button">已通过同学</button>
+	</div>
+	<button id="quit">返回</button>
+</body>
+</html>

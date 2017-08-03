@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>check</title>
+ 
+	<style type="text/css">
+	  body{background:url(img/bg_one.png);}
+      .vertial{
+      	position: absolute;
+        left: 0;right: 0;
+        top: 0;bottom: 0;
+        margin: auto;
+      	width: 400px;
+      	height: 460px;
+      	background:url(img/check.png) no-repeat center ;
+      }
+      h2{
+        margin-top: 90px;
+        color: white;
+        font-size: 32px;
+        font-weight: 300;
+        font-family: "楷体";
+        line-height: 40px;
+        text-align: center;
+      }
+      input {
+          outline: 0;
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          background-color: rgba(255, 255, 255, 0.2);
+          width: 200px;
+          border-radius: 3px;
+          padding: 10px 15px;
+          margin: 0 auto;
+          margin-top: 50px;
+          display: block;
+          text-align: center;
+          font-family: "Microsoft YaHei";
+          font-size: 18px;
+          font-weight: 300;
+          color: white;
+          -webkit-transition-duration: 0.25s;
+                  transition-duration: 0.25s;
+        }
+      input:hover {
+          background-color: rgba(255, 255, 255, 0.4);
+      }
+      input:focus {
+          background-color: white;
+          width: 250px;
+          color: #E7403E;
+      }
+      #oBtn{
+          margin: 0 auto;
+          margin-top: 40px;
+          display: block;
+          outline: 0;border: 0;
+          background-color: white;
+          font-family: "楷体";
+          padding: 10px 15px;
+          color: #E7403E;
+          border-radius: 3px;
+          width: 230px;
+          cursor: pointer;
+          font-size: 26px;
+      }
+	</style>
+  <script src="js/jquery.min.js"></script>
+  <script>
+     $(function(){
+       $('#oBtn').click(function(){
+        var passphrase=$('#checknum').val();
+            $.ajax({
+              url:'../server/group_login.php',
+              type:'POST',
+              data:{
+                'passphrase':passphrase,
+              },
+              success:function(data){ 
+                var obj=eval("("+data+")");
+                alert(obj.msg);
+                if(obj.code==-1)
+                  window.location.href="check.html";
+                else
+                 window.location.href="one.php"
+              },
+              error:function(){
+                alert("出现错误！！！");
+              }
+            })
+       })
+     })  
+  </script>
+</head>
+<body>
+  <div class="vertial">
+    <h2>请输入验证码</h2>
+    <form action="#" autocomplete="off" id="login" >
+      <input type="text" id="checknum" maxlength="6">
+      <input type="button" id="oBtn"  value="登陆" />
+      <!-- onclick="window.open('interviewer.html')" -->
+    </form>
+  </div>
+
+  
+</body>
+</html>

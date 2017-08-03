@@ -1,0 +1,80 @@
+body{padding: 0;margin:0;
+	background: url(349876.jpg) no-repeat;}
+	button{padding: 0;margin:0;}
+#content{
+	width: 850px;
+	min-height: 800px;
+    border:1px solid green;
+    margin:20px auto;     
+}
+#center{
+	width: 850px;
+	min-height: 300px;
+    border:1px solid green;
+    margin:120px auto;
+    background: white;     
+}
+h1{text-align: center;color:green;}
+.head{
+   width:600px;
+   height: 40px;
+   margin:10px auto;
+   text-align: center; 
+  /* background: #ccc;*/
+}
+.he{
+	width:600px;
+   height: 40px;
+   margin:110px auto;
+   text-align: center;
+  /* background: #ccc;*/
+}
+.he button,.head button{float: left;
+	margin-left:60px;
+	height: 40px;
+	width: 120px;
+	line-height: 40px; font-size: 15px;
+	 font-family:"微软雅黑";
+
+	/*color: white;*/
+	/*background:*/ 
+}
+#cont1,#cont2,#cont3{
+     width: 800px;
+     /*height:600px;*/
+     border: 1px solid green;
+     margin:0 auto;
+}
+.display{
+   width: 600px;
+   height: 150px;
+   border: 1px solid green;
+   margin: 5px auto; 
+   border-radius: 10px;
+   box-shadow: 10px 10px;
+}
+.display ul li{
+	list-style: none;
+	float: left;
+	margin:10px 20px;
+	width: 230px;
+	height: 20px;
+	/*border: 1px solid #ccc;*/
+}
+.display ul li span{color: blue;
+	font-size: 20px;}
+.intro{
+	width: 600px;
+	/*height:300px;*/
+	margin:0 auto;
+  /*  border: 1px solid green;*/
+}
+.intro textarea{margin-left:40px;}
+textarea{padding: 15px;font-size: 16px;text-indent: 30px;
+         border-radius: 10px;
+         box-shadow: 8px 8px;outline: none;}
+.pass{width: 600px;text-align: right;margin:0 auto;}
+.padd{padding:10px 0;}
+.padd input{width: 50px;height: 30px;font-size: 12px;outline:none;border-radius: 10px;}
+.p{width: 600px;height:20px; margin:0 auto;}
+.In{width: 30px;height: 30px;}
